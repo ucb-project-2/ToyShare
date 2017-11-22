@@ -1,0 +1,13 @@
+<h1>Some Posts</h1>
+
+<h3> This is Fun! </h3>
+
+<!--Example post (should be put into a partial later)  -->
+<ul>
+  {{#each post}}
+  	<li>
+  	   <p>ID: {{this.id}}</p>
+       <p>Description: {{this.description}}</p>
+  	</li>
+  {{/each}}
+</ul>

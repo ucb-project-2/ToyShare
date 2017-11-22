@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS `mom_app`;
+CREATE DATABASE `mom_app`;
