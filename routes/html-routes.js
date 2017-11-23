@@ -4,15 +4,15 @@
 
 // Dependencies
 // =============================================================
-var path = require("path");
+const path = require('path');
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = (app) => {
 
 
   // index route loads view.html
-  app.get('/', function(req, res) {
+  app.get('/', (req, res) => {
     /* **** Sample/Mocked Data *****/
     const data = [
       {
