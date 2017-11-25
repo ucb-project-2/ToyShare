@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ucb-project-2/mom-app#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
