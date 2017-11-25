@@ -2,6 +2,16 @@ console.log('Testing the upload script');
 
 $( document ).ready(function() {
 
+  //Dom Query
+  var titleInput = $('#title');
+  var descriptionInput = $('#description');
+
+  //Store doc ID after upload - to be used when full form is submitted
+  //(Doc upload and form submit do not happen in lockstep)
+  var docId;
+
+
+  /***** Document Upload code *****/
   $('.upload-btn').on('click',() => {
       $('#upload-input').click();
       $('.progress-bar').text('0%');
@@ -32,7 +42,9 @@ $( document ).ready(function() {
         processData: false,
         contentType: false,
         success: function(data){
-            console.log('upload successful!\n' + data);
+          console.log('upload successful!\n' + data);
+          docId = JSON.parse(data).id;
+          console.log(docId);
         },
         xhr: function() {
           // create an XMLHttpRequest
@@ -64,6 +76,42 @@ $( document ).ready(function() {
       });
 
     }
-  });
+  }); //End Document Upload code
+
+
+  // A function for handling what happens when the form to create a new post is submitted
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      // Constructing a newPost object to hand to the database
+      var newPost = {
+        title: titleInput.val().trim(),
+        description: descriptionInput.val().trim(),
+        DocumentId: docId
+      };
+      console.log(newPost);
+      submitPost(newPost);
+    }
+
+      //If we're updating a post run updatePost to update a post
+      //Otherwise run submitPost to create a whole new post
+    //   if (updating) {
+    //     newPost.id = postId;
+    //     updatePost(newPost);
+    //   }
+    //   else {
+    //     submitPost(newPost);
+    //   }
+    // }
+
+
+  // Submits a new post and brings user to blog page upon completion
+  function submitPost(post) {
+    $.post('/api/post', post, function() {
+      // window.location.href = "/blog";
+    });
+  }
+
+  $('#post-form').on('submit', handleFormSubmit);
 
 });

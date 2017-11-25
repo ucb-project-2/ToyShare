@@ -1,4 +1,4 @@
-<h1>Test Uploader</h1>
+<h1 id="header">Test Uploader</h1>
 
 <h3> Will this work? Who knows.... </h3>
 
@@ -21,7 +21,11 @@
     </div>
   </div>
 </div>
-
-<input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+<form id="post-form" name="post" class="post" action="" method="">
+  <input id="title" type="text" name="title" value="">
+  <input id="description" type="text" name="description" value="">
+  <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+  <button id="submit-form" type="submit" name="post">Submit</button>
+</form>
 
 <script src="js/upload.js"></script>
