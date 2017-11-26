@@ -110,8 +110,11 @@ $( document ).ready(function() {
   // Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
     $.post('/api/post', post, function(response) {
-      //console.log(response);
-      //window.location.href = "/post/2";
+      console.log(response);
+      if (response.result == 'redirect') {
+        //redirecting to success page page from here.
+        window.location.replace(response.url);
+      }
     });
   }
 

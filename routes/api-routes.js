@@ -71,17 +71,18 @@ module.exports = (app) => {
       location: req.body.location
     })
     .then((dbRes) => {
+      console.log(dbRes);
 
       //Update the newly created document to connect to post
       if (req.body.DocumentId) {
         db.Document.update({
-          PostId: req.body.DocumentId
+          PostId: dbRes.dataValues.id
         },{
           where: {
             id: req.body.DocumentId
           }
         }).then(function(dbPost) {
-          res.redirect( 200, `/post/${dbRes.dataValues.id}`);
+          res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
         });
       }
 
