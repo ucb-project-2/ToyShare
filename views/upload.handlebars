@@ -6,26 +6,44 @@
 <hr>
 
 <div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <form id="post-form" name="post" class="post" action="" method="">
+        <label for="title">Post Title: </label>
+        <input id="title" type="text" name="title" value="">
+
+        <label for="description">Description: </label>
+        <input id="description" type="text" name="description" value="">
+
+        <label for="location">Location: </label>
+        <select id="location" class="" name="locaiton">
+          <option value="SF">San Francisco</option>
+          <option value="MTV">Mountain View</option>
+          <option value="SJ">San Jose</option>
+        </select>
+
+        <br><br>
+        <label for="uploads[]">Upload an Image: </label>
+        <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+        <br><br>
+        <button id="submit-form" class="btn btn-primary" type="submit" name="post">Submit</button>
+
+      </form>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
       <div class="panel panel-default">
         <div class="panel-body">
-          <span class="glyphicon glyphicon-cloud-upload"></span>
-          <h2>File Uploader</h2>
-          <div class="progress">
             <div class="progress-bar" role="progressbar"></div>
-          </div>
           <button class="btn btn-lg upload-btn" type="button">Upload File</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<form id="post-form" name="post" class="post" action="" method="">
-  <input id="title" type="text" name="title" value="">
-  <input id="description" type="text" name="description" value="">
-  <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
-  <button id="submit-form" type="submit" name="post">Submit</button>
-</form>
 
-<script src="js/upload.js"></script>
+<script src="/js/upload.js"></script>

@@ -30,9 +30,23 @@ module.exports = (app) => {
   });
 
   // Proof of concept file Uploader.
-  app.get('/upload', (req, res) => {
+  app.get('/post', (req, res) => {
 
     res.render('upload');
+  });
+
+  // Proof of concept file Uploader.
+  app.get('/post/:id', (req, res) => {
+
+    db.Post.findOne({
+    include: db.Document,
+    where: {
+      id: req.params.id
+    }
+  }).then(function(data) {
+      res.render('post-detail', { post: data.dataValues });
+    });
+
   });
 
 };

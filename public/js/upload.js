@@ -5,6 +5,7 @@ $( document ).ready(function() {
   //Dom Query
   var titleInput = $('#title');
   var descriptionInput = $('#description');
+  var postLocation = $('#location');
 
   //Store doc ID after upload - to be used when full form is submitted
   //(Doc upload and form submit do not happen in lockstep)
@@ -87,9 +88,10 @@ $( document ).ready(function() {
       var newPost = {
         title: titleInput.val().trim(),
         description: descriptionInput.val().trim(),
-        DocumentId: docId
+        DocumentId: docId,
+        location: postLocation.val().trim()
       };
-      console.log(newPost);
+      console.log(`\nNew Post Object: ${newPost}`);
       submitPost(newPost);
     }
 
@@ -107,8 +109,9 @@ $( document ).ready(function() {
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
-    $.post('/api/post', post, function() {
-      // window.location.href = "/blog";
+    $.post('/api/post', post, function(response) {
+      //console.log(response);
+      //window.location.href = "/post/2";
     });
   }
 

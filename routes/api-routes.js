@@ -65,10 +65,10 @@ module.exports = (app) => {
 
 
   app.post('/api/post', function(req, res){
-
     db.Post.create({
       title: req.body.title,
-      body: req.body.description,
+      description: req.body.description,
+      location: req.body.location
     })
     .then((dbRes) => {
 
@@ -81,7 +81,7 @@ module.exports = (app) => {
             id: req.body.DocumentId
           }
         }).then(function(dbPost) {
-          res.json(dbPost);
+          res.redirect( 200, `/post/${dbRes.dataValues.id}`);
         });
       }
 
