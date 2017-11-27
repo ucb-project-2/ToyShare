@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-const path = require('path');
+const db = require('../models');
 
 // Routes
 // =============================================================
@@ -29,5 +29,24 @@ module.exports = (app) => {
     res.render('index', { post: data });
   });
 
+  // Proof of concept file Uploader.
+  app.get('/post', (req, res) => {
+
+    res.render('upload');
+  });
+
+  // Proof of concept file Uploader.
+  app.get('/post/:id', (req, res) => {
+
+    db.Post.findOne({
+    include: db.Document,
+    where: {
+      id: req.params.id
+    }
+  }).then(function(data) {
+      res.render('post-detail', { post: data.dataValues });
+    });
+
+  });
 
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define("Post", {
+  const Post = sequelize.define('Post', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,9 +7,19 @@ module.exports = (sequelize, DataTypes) => {
         len: [1]
       }
     },
-    body: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false,
+      len: [1]
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1]
+    },
+    price: {
+      type: DataTypes.STRING,
+      allowNull: true,
       len: [1]
     }
   });
@@ -19,7 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     // A Post can't be created without an User due to the foreign key constraint
     Post.belongsTo(models.User, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
+      }
+    });
+
+    Post.hasMany(models.Document, {
+      foreignKey: {
+        allowNull: true
       }
     });
   };

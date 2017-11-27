@@ -1,0 +1,49 @@
+<h1 id="header">Test Uploader</h1>
+
+<h3> Will this work? Who knows.... </h3>
+
+<br><br>
+<hr>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <form id="post-form" name="post" class="post" action="" method="">
+        <label for="title">Post Title: </label>
+        <input id="title" type="text" name="title" value="">
+
+        <label for="description">Description: </label>
+        <textarea id="description" name="description" rows="5" cols="30"> </textarea>
+
+        <label for="location">Location: </label>
+        <select id="location" class="" name="locaiton">
+          <option value="SF">San Francisco</option>
+          <option value="MTV">Mountain View</option>
+          <option value="SJ">San Jose</option>
+        </select>
+
+        <br><br>
+        <label for="uploads[]">Upload an Image: </label>
+        <input id="upload-input" type="file" name="uploads[]" accept="image/*"></br>
+
+        <br><br>
+        <button id="submit-form" class="btn btn-primary" type="submit" name="post">Submit</button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="progress-bar" role="progressbar"></div>
+         <button class="btn upload-btn btn-success" type="button">Upload File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<script src="/js/upload.js"></script>
