@@ -1,8 +1,59 @@
-<h1>Some Posts</h1>
+<div class="jumbotron jumbotron-fluid parallax" id="header">
+  <div class="toplogo">
+      <a href="index.html">
+          <img src="img/logo.png" alt="logo">
+      </a>
+    <h3 class="display-5">Welcome to MomApp!</h3><br>
+  </div>
+  <!-- Logo + menu start -->
+  <div class="header-middle">
+      <div class="container header-middle-cont">
+          <div class="shop-menu">
+              <ul class="shopmenu">
 
-<h3> This is Fun! </h3>
+                <li class="topauth">
+                    <a href="auth.html">
+                        <i class="fa fa-lock"></i>
+                        <span class="shop-menu-ttl">Registration</span>
+                    </a> OR 
+                    <a href="auth.html">
+                        <span class="shop-menu-ttl">Login</span>
+                    </a>
+                </li>
+
+                  <li>
+                      <a href="wishlist.html">
+                          <i class="fa fa-heart"></i>
+                          <span class="shop-menu-ttl">Wishlist</span>
+                          (<span id="topbar-favorites">1</span>)
+                      </a>
+                  </li>
+
+                  <li>
+                      <a href="compare.html">
+                          <i class="fa fa-bar-chart"></i>
+                          <span class="shop-menu-ttl">Compare</span> (5)
+                      </a>
+                  </li>
+
+                  <li>
+                      <div class="h-cart">
+                          <a href="cart.html">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span class="shop-menu-ttl">Cart</span>
+                              (<b>0</b>)
+                          </a>
+                      </div>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
 
 <!--Example post (should be put into a partial later)  -->
+<div class="container">
 <ul>
   {{#each post}}
   	<li>
@@ -11,3 +62,4 @@
   	</li>
   {{/each}}
 </ul>
+</div>

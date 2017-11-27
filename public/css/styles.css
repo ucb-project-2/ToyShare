@@ -1,0 +1,26 @@
+.jumbotron, .parallax {
+  background-image: url(/img/bbb.jpg);
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*text-align: center;*/
+  padding-top: 15px;
+}
+.toplogo img {
+	display: block;
+	max-height: 120px;
+	max-width: 400px;
+	width: auto;
+	height: auto;
+  float: left;
+  margin-left: 50px;
+}
+.shopmenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    margin-top: 0;
+}
