@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   /*text-align: center;*/
-  padding-top: 15px;
+  padding-top: 20px;
 }
 .toplogo img {
 	display: block;
@@ -18,9 +18,14 @@
   margin-left: 50px;
 }
 .shopmenu {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     float: right;
     margin-top: 0;
+    padding-top: 360px;
+    margin-right: 10px;
+}
+.shopmenu li {
+    display: inline-block;
 }
