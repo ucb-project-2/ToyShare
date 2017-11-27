@@ -1,0 +1,19 @@
+<h1>Post Detail Page</h1>
+
+<h3>{{post.title}}</h3>
+
+<ul>
+  <li>
+    <p>ID: {{post.id}}</p>
+  </li>
+  <li>
+    <p>Description: {{post.description}}</p>
+  </li>
+
+  {{#each post.Documents}}
+  <li>
+    <!-- Cannot serve up local files - to fix -->
+    <img src="{{this.dataValues.url}}" alt="Post Image {{this.dataValues.file_name}}">
+  </li>
+  {{/each}}
+</ul>
