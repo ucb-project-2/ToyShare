@@ -33,3 +33,7 @@
 .shopmenu li {
     display: inline-block;
 }
+
+body {
+  background-image: url(/img/hypnotize.png);
+}
