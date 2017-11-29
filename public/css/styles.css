@@ -7,6 +7,7 @@
   background-size: cover;
   /*text-align: center;*/
   padding-top: 20px;
+  font-family: 'Questrial', sans-serif;
 }
 .main_banner {
   text-align: center;
@@ -14,22 +15,45 @@
 }
 .toplogo img {
 	display: block;
-	max-height: 120px;
+	max-height: 80px;
 	max-width: 400px;
 	width: auto;
 	height: auto;
   float: left;
-  margin-left: 50px;
+  margin-left: 35px;
+  margin-top: -10px;
+  margin-right: 10px;
+  opacity: .5;
 }
-.shopmenu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-    margin-top: 0;
-    padding-top: 360px;
-    margin-right: 10px;
+/*.welcome_header {
+  /*background-color: lightpink;*/
+  /*padding: 15px 0 15px 0;*/
+  /*opacity: .5;*/
+/*}*/
+#welcome_text {
+  opacity: .7;
+  margin-top: -8px;
+  padding: 10px 0 15px 0;
+  font-size: 38px;
+  /*color: hotpink;*/
 }
-.shopmenu li {
-    display: inline-block;
+#post_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#upload_header {
+  background-image: url(/img/legging.jpg);
+  min-height: 400px;
+}
+.upload_display {
+  background-color: cyan;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  margin-top: 15%;
+  opacity: .8;
+  border-radius: 20px;
+}
+#upload_header_text {
+  opacity: 1;
 }
