@@ -66,28 +66,49 @@ module.exports = (app) => {
 
   app.post('/api/post', function(req, res){
     db.Post.create({
-      title: req.body.title,
-      description: req.body.description,
-      location: req.body.location
+      poster_name: req.body.poster_name,
+      item_name: req.body.item_name,
+      item_description: req.body.item_description,
+      borrowed: req.body.borrowed,
+      recipient: req.body.recipient,
+      poster_email: req.body.poster_email,
+      recipient_email: req.body.recipient_email
     })
     .then((dbRes) => {
       console.log(dbRes);
+      res.json(dbRes)
+  });
 
-      //Update the newly created document to connect to post
-      if (req.body.DocumentId) {
-        db.Document.update({
-          PostId: dbRes.dataValues.id
-        },{
-          where: {
-            id: req.body.DocumentId
-          }
-        }).then(function(dbPost) {
-          res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
-        });
+  app.delete("/api/post/:id", function(req, res) {
+    // Destroy takes in one argument: a "where object describing the todos we want to destroy
+    db.Todo.destroy({
+      where: {
+        id: req.params.id
       }
-
+    })
+    .then(function(dbTodo) {
+      res.json(dbTodo);
     });
 
   });
+
+    // PUT route for updating todos. We can get the updated todo data from req.body
+  app.put("/api/todos", function(req, res) {
+    // Update takes in two arguments, an object describing the properties we want to update,
+    // and another "where" object describing the todos we want to update
+    db.Todo.update({
+      text: req.body.text,
+      complete: req.body.complete
+    }, {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(dbTodo) {
+      res.json(dbTodo);
+    });
+
+  });
+};
 
 };
