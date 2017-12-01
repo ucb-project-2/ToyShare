@@ -57,3 +57,7 @@
 #upload_header_text {
   opacity: 1;
 }
+.upload_body {
+  background-image: url(/img/colorful.png);
+  margin-top: -30px;
+}
