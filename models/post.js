@@ -1,13 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
-    title: {
+    item_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    description: {
+    item_img: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      len: [1]
+    },
+    item_desc: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1]
+    },
+    borrowed: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1]
@@ -16,12 +26,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1]
-    },
-    price: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      len: [1]
     }
+    // price: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   len: [1]
+    // }
   });
 
   Post.associate = (models) => {
