@@ -21,7 +21,8 @@ module.exports = (app) => {
         item_name: 'Baby Bjorn',
         item_img: '',
         item_desc: 'Baby Carrier',
-        borrowed: 'available'
+        borrowed: 'available',
+        poster_email: 'example@gmail.com'
       },
       {
         id: 2,
@@ -29,7 +30,8 @@ module.exports = (app) => {
         item_name: 'Pack n Play',
         item_img: '',
         item_desc: 'Baby Crib/Bassinet',
-        borrowed: 'available'
+        borrowed: 'available',
+        poster_email: 'example@gmail.com'
       }
     ];
     /* **** Sample/Mocked Data *****/
