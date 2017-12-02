@@ -17,11 +17,21 @@ module.exports = (app) => {
     const data = [
       {
         id: 1,
-        description: 'This is a test post'
+        poster_name: 'Michelle',
+        item_name: 'Baby Bjorn',
+        item_img: '',
+        item_desc: 'Baby Carrier',
+        borrowed: '',
+        poster_email: 'example@gmail.com'
       },
       {
         id: 2,
-        description: 'What a fun application. So novel and new!'
+        poster_name: 'Patricia',
+        item_name: 'Pack n Play',
+        item_img: '',
+        item_desc: 'Baby Crib/Bassinet',
+        borrowed: '',
+        poster_email: 'example@gmail.com'
       }
     ];
     /* **** Sample/Mocked Data *****/

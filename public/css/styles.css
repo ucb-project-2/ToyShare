@@ -47,13 +47,22 @@
   min-height: 400px;
 }
 .upload_display {
-  background-color: cyan;
+  background-color: #B9D3EE;
   text-align: center;
   padding: 15px 0 15px 0;
-  margin-top: 15%;
-  opacity: .8;
-  border-radius: 20px;
+  margin-top: 18%;
+  margin-left: 15%;
+  opacity: .95;
+  border-radius: 10px;
+  max-width: 500px;
 }
 #upload_header_text {
   opacity: 1;
+}
+.upload_body {
+  background-image: url(/img/dust.png);
+  margin-top: -30px;
+}
+.upbody {
+  margin-left: 20%;
 }
