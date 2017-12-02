@@ -21,7 +21,7 @@ module.exports = (app) => {
         item_name: 'Baby Bjorn',
         item_img: '',
         item_desc: 'Baby Carrier',
-        borrowed: 'available',
+        borrowed: '',
         poster_email: 'example@gmail.com'
       },
       {
@@ -30,7 +30,7 @@ module.exports = (app) => {
         item_name: 'Pack n Play',
         item_img: '',
         item_desc: 'Baby Crib/Bassinet',
-        borrowed: 'available',
+        borrowed: '',
         poster_email: 'example@gmail.com'
       }
     ];
