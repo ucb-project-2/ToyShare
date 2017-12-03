@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
 
   });
 
-  // Document will be associated to post that they are contained within, therefore, also associated with the user that created the post.
+  // Document will be associated to post that they are contained within,
+  // therefore, also associated with the user that created the post.
   Document.associate = (models) => {
     Document.belongsTo(models.Post, {
       foreignKey: {
