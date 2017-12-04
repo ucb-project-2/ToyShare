@@ -4,6 +4,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
+const path = require('path');
+
+//Package to allow local development with ENV variables
+require('dotenv').config();
 
 
 // Sets up the Express App
@@ -25,7 +29,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Static directory
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname + '/public')));
 
 // Routes
 // =============================================================
@@ -40,3 +44,5 @@ db.sequelize.sync().then(() => {
     console.log(`App listening on PORT: ${PORT} and available at http://localhost:${PORT}`);
   });
 });
+
+console.log(`This is the env test. ${process.env.TEST_ITEM}`);

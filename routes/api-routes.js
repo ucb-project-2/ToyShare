@@ -1,77 +1,120 @@
 // *********************************************************************************
-// api-routes.js - this file offers a set of routes for sending data 
+// api-routes.js - this file offers a set of routes for sending data
 // *********************************************************************************
 
 // Dependencies
 // =============================================================
 const path = require('path');
-const formidable = require('formidable');
 const fs = require('fs');
 const db = require('../models');
+const firebase = require('firebase');
+const firebaseConfig = require('../config/firebase');
+const Multer = require('multer');
+
+
+
+/* File Upload Setup for Image Hosting */
+
+const config = {
+  projectId: 'mom-app-2017',
+  credentials: firebaseConfig
+};
+
+var storage = require('@google-cloud/storage')(config);
+
+
+const bucket = storage.bucket('mom-app-2017.appspot.com');
+
+const multer = Multer({
+  storage: Multer.memoryStorage(),
+  limits: {
+    fileSize: 10 * 1024 * 1024 // no larger than 10mb, we can change as needed.
+  }
+});
+
 
 // Routes
 // =============================================================
 module.exports = (app) => {
 
 
-  app.post('/upload', function(req, res){
+  /*** Adding new file to the storage*/
+  app.post('/upload', multer.single('file'), (req, res) => {
+    console.log('Upload Image');
 
-    // create an incoming form object
-    const form = new formidable.IncomingForm();
-
-    // parse the incoming request containing the form data
-    form.parse(req);
-
-    // specify that we want to allow the user to upload multiple files in a single request
-    form.multiples = true;
-
-    // store all uploads in the /uploads directory
-    form.uploadDir = path.join(__dirname, '../uploads/files');
-
-    // every time a file has been uploaded successfully,
-    // rename it to it's orignal name
-    form.on('file', function(field, file) {
-      const filePath = path.join(form.uploadDir, file.name)
-
-      fs.rename(file.path, filePath, (err) => {
-        if (err) throw err;
-
-        writeFile(filePath, file, res);
-      });
-    });
-
-    function writeFile(filePath, file, res) {
-      db.Document.create({
-        file_name: file.name,
-        file_type: file.type,
-        url: filePath
-      })
-      .then((dbRes) => {
-        res.json(JSON.stringify(dbRes));
+    let file = req.file;
+    if (file) {
+      uploadImageToStorage(file, res).then((success) => {
+        //res.json(JSON.stringify(success));
+        console.log(success);
+      }).catch((error) => {
+        console.error(error);
       });
     }
-
-    // log any errors that occur
-    form.on('error', function(err) {
-      console.log('An error has occured: \n' + err);
-    });
-
-    // once all the files have been uploaded, send a response to the client
-    form.on('end', function() {
-      //res.end('success');
-    });
-
   });
 
+  /**
+   * Upload the image file to Google Storage
+   * @param {File} file object that will be uploaded to Google Storage
+   */
+  const uploadImageToStorage = (file, res) => {
+    console.log(file);
+    let prom = new Promise((resolve, reject) => {
+      if (!file) {
+        reject('No image file');
+      }
+      let newFileName = `${file.originalname}_${Date.now()}`;
+      let fileUpload = bucket.file(newFileName);
+
+      const blobStream = fileUpload.createWriteStream({
+        metadata: {
+          contentType: file.mimetype
+        }
+      });
+
+      blobStream.on('error', (error) => {
+        console.log(error);
+        reject('Something is wrong! Unable to upload at the moment.');
+      });
+
+      blobStream.on('finish', () => {
+        //console.log(fileUpload, getPublicUrl(fileUpload));
+        // The public URL can be used to directly access the file via HTTP.
+        fileUpload.makePublic().then(() => {
+          console.log(fileUpload.metadata);
+          const url = `https://storage.googleapis.com/${bucket.name}/${fileUpload.name}`;
+          writeFile(url, fileUpload.metadata, res)
+          resolve(url);
+        });
+      });
+
+      blobStream.end(file.buffer);
+    });
+    return prom;
+  }
+
+
+  function writeFile(url, file, res) {
+    db.Document.create({
+      file_name: file.name,
+      file_type: file.contentType,
+      url: url
+    })
+    .then((dbRes) => {
+      res.json(JSON.stringify(dbRes));
+    });
+  }
 
   app.post('/api/post', function(req, res){
     db.Post.create({
-      title: req.body.title,
-      description: req.body.description,
-      location: req.body.location
+      poster_name: req.body.posterName,
+      item_name: req.body.item,
+      item_description: req.body.description,
+      location: req.body.location,
+      poster_email: req.body.posterEmail
     })
     .then((dbRes) => {
-      console.log(dbRes);
+      //console.log(dbRes);
 
       //Update the newly created document to connect to post
       if (req.body.DocumentId) {
@@ -84,6 +127,9 @@ module.exports = (app) => {
         }).then(function(dbPost) {
           res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
         });
+      } else {
+        console.log('No Image Uploaded');
+        res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
       }
 
     });

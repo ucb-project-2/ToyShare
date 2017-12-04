@@ -10,9 +10,24 @@
   <div class="container upbody">
     <div class="row">
     <div class="col-md-6">
+
+      <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+        Select an image to upload:
+        <input id="upload-input" type="file" name="file">
+        <input type="submit" value="Upload Image">
+      </form>
+
+      <br> <br>
       <form id="post-form" name="post" class="post" action="" method="">
-        <label for="title">Post Title: </label>
-        <input id="title" type="text" name="title" value="">
+        <label for="item-name">Item Name:</label>
+        <input id="item-name" type="text" name="item-name" value="">
+
+        <label for="poster-name">Poster Name:</label>
+        <input id="poster-name" type="text" name="poster-name" value="">
+
+        <label for="poster-email">Poster Email:</label>
+        <input id="poster-email" type="text" name="poster-email" value="">
+
 
         <label for="description">Description: </label>
         <textarea id="description" name="description" rows="5" cols="30"> </textarea>
@@ -24,9 +39,6 @@
           <option value="SJ">San Jose</option>
         </select>
 
-        <br><br>
-        <label for="uploads[]">Upload an Image: </label>
-        <input id="upload-input" type="file" name="uploads[]" accept="image/*"></br>
         <br>
         <button id="submit-form" class="btn btn-primary" type="submit" name="post">Submit</button>
       </form>

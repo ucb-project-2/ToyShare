@@ -1,10 +1,11 @@
-console.log('Testing the upload script');
 
 $( document ).ready(function() {
 
   //Dom Query
-  var titleInput = $('#title');
-  var descriptionInput = $('#description');
+  var itemName = $('#item-name');
+  var posterName = $('#poster-name');
+  var posterEmail = $('#poster-email');
+  var description = $('#description');
   var postLocation = $('#location');
 
   //Store doc ID after upload - to be used when full form is submitted
@@ -13,71 +14,27 @@ $( document ).ready(function() {
 
 
   /***** Document Upload code *****/
-  $('.upload-btn').on('click',() => {
-      $('#upload-input').click();
-      $('.progress-bar').text('0%');
-      $('.progress-bar').width('0%');
-  });
 
-  $('#upload-input').on('change', function() {
-
-    const files = $(this).get(0).files;
-
-    if (files.length > 0){
-      // create a FormData object which will be sent as the data payload in the
-      // AJAX request
-      const formData = new FormData();
-
-      // loop through all the selected files and add them to the formData object
-      for (let i = 0; i < files.length; i++) {
-        let file = files[i];
-
-        // add the files to formData object for the data payload
-        formData.append('uploads[]', file, file.name);
+  $("#uploadForm").on('submit',( function (event) {
+   event.preventDefault();
+   $.ajax({
+      url: "/upload",
+      type: "POST",
+      data:  new FormData(this),
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: successHandler,
+      error: function(error){
+         console.log(error);
       }
+   });
+}));
 
-      $.ajax({
-        url: '/upload',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data){
-          console.log('upload successful!\n' + data);
-          docId = JSON.parse(data).id;
-          console.log(docId);
-        },
-        xhr: function() {
-          // create an XMLHttpRequest
-          const xhr = new XMLHttpRequest();
-
-          // listen to the 'progress' event
-          xhr.upload.addEventListener('progress', function(evt) {
-
-            if (evt.lengthComputable) {
-              // calculate the percentage of upload completed
-              let percentComplete = evt.loaded / evt.total;
-              percentComplete = parseInt(percentComplete * 100);
-
-              // update the Bootstrap progress bar with the new percentage
-              $('.progress-bar').text(percentComplete + '%');
-              $('.progress-bar').width(percentComplete + '%');
-
-              // once the upload reaches 100%, set the progress bar text to done
-              if (percentComplete === 100) {
-                $('.progress-bar').html('Done');
-              }
-
-            }
-
-          }, false);
-
-          return xhr;
-        }
-      });
-
-    }
-  }); //End Document Upload code
+function successHandler(data) {
+  docId = JSON.parse(data).id;
+  console.log(docId);
+}
 
 
   // A function for handling what happens when the form to create a new post is submitted
@@ -86,8 +43,10 @@ $( document ).ready(function() {
 
       // Constructing a newPost object to hand to the database
       var newPost = {
-        title: titleInput.val().trim(),
-        description: descriptionInput.val().trim(),
+        item: itemName.val().trim(),
+        posterName: posterName.val().trim(),
+        posterEmail: posterEmail.val().trim(),
+        description: description.val().trim(),
         DocumentId: docId,
         location: postLocation.val().trim()
       };
