@@ -11,7 +11,7 @@
       {{/each}}
       <div class="card-body">
         <h4 class="card-title">{{post.item_name}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{post.poster_name}} ({{post.poster_email}})</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{post.poster_name}} (<a href="mailto:{{post.poster_email}}" target="_top">{{post.poster_email}}</a>)</h6>
         <p class="card-text">{{post.item_description}}</p>
 
       </div>
