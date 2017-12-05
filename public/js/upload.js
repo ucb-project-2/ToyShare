@@ -7,15 +7,21 @@ $( document ).ready(function() {
   var posterEmail = $('#poster-email');
   var description = $('#description');
   var postLocation = $('#location');
+  var $uploadBtn = $('#upload-btn');
+  var $uploadInput = $('#upload-input');
 
   //Store doc ID after upload - to be used when full form is submitted
   //(Doc upload and form submit do not happen in lockstep)
   var docId;
 
 
+ $uploadInput.on('change', function() {
+   $uploadBtn.click();
+ });
+
   /***** Document Upload code *****/
 
-  $("#uploadForm").on('submit',( function (event) {
+  $('#uploadForm').on('submit',( function (event) {
    event.preventDefault();
    $.ajax({
       url: "/upload",
@@ -78,5 +84,6 @@ function successHandler(data) {
   }
 
   $('#post-form').on('submit', handleFormSubmit);
+
 
 });

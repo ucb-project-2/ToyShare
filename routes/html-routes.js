@@ -39,14 +39,28 @@ module.exports = (app) => {
     res.render('index', { post: data });
   });
 
-  // Proof of concept file Uploader.
-  app.get('/post', (req, res) => {
+  /****** Route for listing all posts ******/
+  app.get('/posts/', (req, res) => {
+
+    db.Post.findAll({
+    include: db.Document//,
+    //where: {
+    //}
+  }).then(function(data) {
+    console.log(data);
+      res.render('post-listing', { post: data });
+    });
+
+  });
+
+  /****** Route for the new Post page ******/
+  app.get('/posts/new', (req, res) => {
 
     res.render('upload');
   });
 
   // Proof of concept file Uploader.
-  app.get('/post/:id', (req, res) => {
+  app.get('/posts/:id', (req, res) => {
 
     db.Post.findOne({
     include: db.Document,

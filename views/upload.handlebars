@@ -1,21 +1,31 @@
+
 <div class="upload_body">
 <div class="jumbotron jumbotron-fluid parallax" id="upload_header">
       <!-- <a href="index.html">
           <!- <img src="img/legging.jpg" alt="logo"> -->
       <!-- </a> -->
-      <div class="container">
+  <div class="container">
     <h3 class="upload_display"><div id="upload_header_text">Upload an item for others to borrow!</div></h3><br>
   </div>
 </div>
   <div class="container upbody">
+
+    <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="col-md-8 form-group">
+          Select an image to upload:
+          <input id="upload-input" type="file" name="file" class="file form-control-file" data-preview-file-type="text" accept="image/*">
+        </div>
+        <div class="col-md-2 form-group align-self-end">
+          <input id="upload-btn" class="hidden" type="submit" value="Upload Image">
+        </div>
+      </div>
+    </form>
+
+
     <div class="row">
     <div class="col-md-6">
 
-      <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
-        Select an image to upload:
-        <input id="upload-input" type="file" name="file">
-        <input type="submit" value="Upload Image">
-      </form>
 
       <br> <br>
       <form id="post-form" name="post" class="post" action="" method="">
@@ -47,16 +57,5 @@
   </div>
 </div>
 </div>
-  <!-- <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="progress-bar" role="progressbar"></div>
-         <button class="btn upload-btn btn-success" type="button">Upload File</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <script src="/js/upload.js"></script>
