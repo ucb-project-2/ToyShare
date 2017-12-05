@@ -1,0 +1,29 @@
+
+<div class="container">
+
+  <div class="row">
+
+  {{#each post}}
+    <div class="col-md-4">
+      <div class="card m-1">
+        {{#if this.dataValues.Documents}}
+          {{#each this.dataValues.Documents}}
+            <img class="card-img-top" src="{{this.dataValues.url}}" alt="Listing Image">
+          {{/each}}
+        {{else}}
+          <img class="card-img-top" src="http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder2.png" alt="No Image">
+        {{/if}}
+
+        <!-- <img class="card-img-top" src="{{this.dataValues.url}}" alt="Listing Image"> -->
+        <div class="card-body">
+          <h4 class="card-title">{{this.dataValues.item_name}}</h4>
+          <p class="card-text">{{this.item_description}}</p>
+          <a href="/posts/{{this.id}}" class="btn btn-primary">View Listing</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+  </div>
+
+</div>

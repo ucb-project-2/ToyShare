@@ -1,19 +1,22 @@
-<h1>Post Detail Page</h1>
 
-<h3>{{post.title}}</h3>
+<div class="container">
 
-<ul>
-  <li>
-    <p>ID: {{post.id}}</p>
-  </li>
-  <li>
-    <p>Description: {{post.description}}</p>
-  </li>
 
-  {{#each post.Documents}}
-  <li>
-    <!-- Cannot serve up local files - to fix -->
-    <img src="{{this.dataValues.url}}" alt="Post Image {{this.dataValues.file_name}}">
-  </li>
-  {{/each}}
-</ul>
+  <h1>Post Detail Page</h1>
+
+
+    <div class="card" style="width: 30rem;">
+      {{#each post.Documents}}
+        <img class="card-img-top" src="{{this.dataValues.url}}" alt="Listing Image">
+      {{/each}}
+      <div class="card-body">
+        <h4 class="card-title">{{post.item_name}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{post.poster_name}} (<a href="mailto:{{post.poster_email}}" target="_top">{{post.poster_email}}</a>)</h6>
+        <p class="card-text">{{post.item_description}}</p>
+
+      </div>
+    </div>
+
+
+
+</div>

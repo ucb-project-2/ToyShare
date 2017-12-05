@@ -4,6 +4,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
+const path = require('path');
+
+//Package to allow local development with ENV variables
+require('dotenv').config();
 
 
 // Sets up the Express App
@@ -25,7 +29,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Static directory
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname + '/public')));
 
 // Routes
 // =============================================================

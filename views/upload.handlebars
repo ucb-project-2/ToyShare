@@ -1,18 +1,43 @@
+
 <div class="upload_body">
 <div class="jumbotron jumbotron-fluid parallax" id="upload_header">
       <!-- <a href="index.html">
           <!- <img src="img/legging.jpg" alt="logo"> -->
       <!-- </a> -->
-      <div class="container">
+  <div class="container">
     <h3 class="upload_display"><div id="upload_header_text">Upload an item for others to borrow!</div></h3><br>
   </div>
 </div>
   <div class="container upbody">
+
+    <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="col-md-8 form-group">
+          Select an image to upload:
+          <input id="upload-input" type="file" name="file" class="file form-control-file" data-preview-file-type="text" accept="image/*">
+        </div>
+        <div class="col-md-2 form-group align-self-end">
+          <input id="upload-btn" class="hidden" type="submit" value="Upload Image">
+        </div>
+      </div>
+    </form>
+
+
     <div class="row">
     <div class="col-md-6">
+
+
+      <br> <br>
       <form id="post-form" name="post" class="post" action="" method="">
-        <label for="title">Post Title: </label>
-        <input id="title" type="text" name="title" value="">
+        <label for="item-name">Item Name:</label>
+        <input id="item-name" type="text" name="item-name" value="">
+
+        <label for="poster-name">Poster Name:</label>
+        <input id="poster-name" type="text" name="poster-name" value="">
+
+        <label for="poster-email">Poster Email:</label>
+        <input id="poster-email" type="text" name="poster-email" value="">
+
 
         <label for="description">Description: </label>
         <textarea id="description" name="description" rows="5" cols="30"> </textarea>
@@ -24,9 +49,6 @@
           <option value="SJ">San Jose</option>
         </select>
 
-        <br><br>
-        <label for="uploads[]">Upload an Image: </label>
-        <input id="upload-input" type="file" name="uploads[]" accept="image/*"></br>
         <br>
         <button id="submit-form" class="btn btn-primary" type="submit" name="post">Submit</button>
       </form>
@@ -35,16 +57,5 @@
   </div>
 </div>
 </div>
-  <!-- <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="progress-bar" role="progressbar"></div>
-         <button class="btn upload-btn btn-success" type="button">Upload File</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <script src="/js/upload.js"></script>
