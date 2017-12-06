@@ -125,11 +125,11 @@ module.exports = (app) => {
             id: req.body.DocumentId
           }
         }).then(function(dbPost) {
-          res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
+          res.status(200).send({result: 'redirect', url: `/posts/${dbRes.dataValues.id}`})
         });
       } else {
         console.log('No Image Uploaded');
-        res.status(200).send({result: 'redirect', url: `/post/${dbRes.dataValues.id}`})
+        res.status(200).send({result: 'redirect', url: `/posts/${dbRes.dataValues.id}`})
       }
 
     });
