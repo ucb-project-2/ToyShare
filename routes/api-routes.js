@@ -37,7 +37,6 @@ const multer = Multer({
 // =============================================================
 module.exports = (app) => {
 
-
   /*** Adding new file to the storage*/
   app.post('/upload', multer.single('file'), (req, res) => {
     console.log('Upload Image');
@@ -111,7 +110,8 @@ module.exports = (app) => {
       item_name: req.body.item,
       item_description: req.body.description,
       location: req.body.location,
-      poster_email: req.body.posterEmail
+      poster_email: req.body.posterEmail,
+      borrowed: req.body.borrowed
     })
     .then((dbRes) => {
       //console.log(dbRes);
@@ -131,8 +131,21 @@ module.exports = (app) => {
         console.log('No Image Uploaded');
         res.status(200).send({result: 'redirect', url: `/posts/success/${dbRes.dataValues.id}`})
       }
-
     });
+  });
+
+
+
+  app.put('/posts/update', (req, res) => {
+    console.log("hello")
+    console.log(req)
+    db.Post.update({
+          borrowed: true
+        },{
+          where: {
+            id: req.body.id
+          }
+    })
 
   });
 

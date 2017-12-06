@@ -44,8 +44,9 @@ module.exports = (app) => {
 
     db.Post.findAll({
     include: db.Document//,
-    //where: {
-    //}
+    // where: {
+    //   borrowed: true;
+    // }
   }).then(function(data) {
     console.log(data);
       res.render('post-listing', { post: data });
