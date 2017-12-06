@@ -15,8 +15,7 @@ if (process.env.JAWSDB_URL) {
       port:     match[4],
       host:     match[3],
       logging:  true //false
-    })
-  });
+    });
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
