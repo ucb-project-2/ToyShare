@@ -72,6 +72,17 @@ module.exports = (app) => {
       res.render('post-detail', { post: data.dataValues });
     });
 
+});
+app.get('/posts/success/:id', (req, res) => {
+
+  db.Post.findOne({
+  include: db.Document,
+  where: {
+    id: req.params.id
+  }
+}).then(function(data) {
+    res.render('success', { post: data.dataValues });
   });
 
+});
 };

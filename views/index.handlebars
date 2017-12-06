@@ -5,20 +5,31 @@
       </a>
     <h3 class="welcome_header"><div id="welcome_text">Welcome to MomApp</div></h3><br>
   </div>
+  <div class="container">
+  <p class="explain">
+    A place for parents to borrow & share items with other parents</p>
+  </div>
+  <!-- Button to posts/new -->
+  <div class="post_rbutton">
+  <a href="/posts/new"><button>Post an Item</button></a>
+  </div>
+  <div class="see_posts_rbutton">
+  <a href="/posts"><button>All Available Items</button></a>
+  </div>
 </div>
-  <!-- Logo + menu start -->
-
 <!--Example post (should be put into a partial later)  -->
-<div class="container">
-<ul>
-  {{#each post}}
-  	<li id="post_list">
-       <p>Item: {{this.item_name}}<br>
-         Poster: {{this.poster_name}}<br>
-         Description: {{this.item_desc}}<br>
-         Borrowed: {{this.borrowed}}<br>
-         Contact {{this.poster_name}}: {{this.poster_email}}</p>
-  	</li>
-  {{/each}}
-</ul>
-</div>
+<!-- <div class="index_body">
+  <div class="container">
+      <ul class="items_available">
+        {{#each post}}
+  	     <li id="post_list">
+           <p>Item: {{this.item_name}}<br>
+             Poster: {{this.poster_name}}<br>
+             Description: {{this.item_desc}}<br>
+             Borrowed: {{this.borrowed}}<br>
+             Contact {{this.poster_name}}: {{this.poster_email}}</p>
+  	      </li>
+          {{/each}}
+        </ul>
+    </div>
+  </div> -->

@@ -1,5 +1,4 @@
-
-<div class="post_detail">
+<div class="success_body">
   <div class="container">
 
   <h1>Post Detail Page</h1>
@@ -13,10 +12,12 @@
         <h4 class="card-title">{{post.item_name}}</h4>
         <h6 class="card-subtitle mb-2 text-muted">{{post.poster_name}} (<a href="mailto:{{post.poster_email}}" target="_top">{{post.poster_email}}</a>)</h6>
         <p class="card-text">{{post.item_description}}</p>
-
+        <div class="see_posts_rbutton">
+        <a href="/posts"><button>See All Available Items</button></a>
+        </div>
       </div>
-
-      <button id="borrow-button" data-id="{{post.id}}" class="btn btn-primary" type="submit" name="post">Borrow</button>
     </div>
-  </div>
+
+
+</div>
 </div>
