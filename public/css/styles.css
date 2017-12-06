@@ -94,7 +94,7 @@ button:active {
   text-align: center;
   padding: 15px 0 15px 0;
   margin-top: 18%;
-  margin-left: 15%;
+  margin-left: 0%;
   opacity: .95;
   border-radius: 10px;
   max-width: 500px;
@@ -111,4 +111,15 @@ button:active {
 }
 .hidden {
   display: none;
+}
+.success_body,
+.post_detail,
+.post_listing {
+  background-image: url(/img/dust.png);
+  /*margin-top: -30px;*/
+}
+#fixedbutton {
+    position: fixed;
+    top: 0px;
+    right: 0px;
 }
