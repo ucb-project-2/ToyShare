@@ -12,8 +12,6 @@ if (process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL, {
       dialect:  'mysql',
       protocol: 'mysql',
-      port:     match[4],
-      host:     match[3],
       logging:  true //false
     });
 } else {
