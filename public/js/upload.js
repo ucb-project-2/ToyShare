@@ -54,7 +54,8 @@ function successHandler(data) {
         posterEmail: posterEmail.val().trim(),
         description: description.val().trim(),
         DocumentId: docId,
-        location: postLocation.val().trim()
+        location: postLocation.val().trim(),
+        borrowed: false
       };
       console.log(`\nNew Post Object: ${newPost}`);
       submitPost(newPost);
@@ -74,7 +75,7 @@ function successHandler(data) {
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
-    $.post('/api/post', post, function(response) {
+    $.post('/api/posts/:id', post, function(response) {
       console.log(response);
       if (response.result == 'redirect') {
         //redirecting to success page page from here.
