@@ -116,7 +116,7 @@ button:active {
 .post_detail,
 .post_listing {
   background-image: url(/img/dust.png);
-  /*margin-top: -30px;*/
+  min-height: 500px;
 }
 #fixedbutton {
     top: 5px;
