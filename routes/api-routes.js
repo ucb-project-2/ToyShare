@@ -13,6 +13,7 @@ const Multer = require('multer');
 
 
 
+
 /* File Upload Setup for Image Hosting */
 
 const config = {
@@ -20,9 +21,7 @@ const config = {
   credentials: firebaseConfig
 };
 
-var storage = require('@google-cloud/storage')(config);
-
-
+const storage = require('@google-cloud/storage')(config);
 const bucket = storage.bucket('mom-app-2017.appspot.com');
 
 const multer = Multer({
@@ -39,7 +38,6 @@ module.exports = (app) => {
 
   /*** Adding new file to the storage*/
   app.post('/upload', multer.single('file'), (req, res) => {
-    console.log('Upload Image');
 
     let file = req.file;
     if (file) {
@@ -57,7 +55,6 @@ module.exports = (app) => {
    * @param {File} file object that will be uploaded to Google Storage
    */
   const uploadImageToStorage = (file, res) => {
-    console.log(file);
     let prom = new Promise((resolve, reject) => {
       if (!file) {
         reject('No image file');
@@ -77,7 +74,6 @@ module.exports = (app) => {
       });
 
       blobStream.on('finish', () => {
-        //console.log(fileUpload, getPublicUrl(fileUpload));
         // The public URL can be used to directly access the file via HTTP.
         fileUpload.makePublic().then(() => {
           console.log(fileUpload.metadata);
@@ -114,8 +110,6 @@ module.exports = (app) => {
       borrowed: req.body.borrowed
     })
     .then((dbRes) => {
-      //console.log(dbRes);
-
       //Update the newly created document to connect to post
       if (req.body.DocumentId) {
         db.Document.update({
@@ -137,8 +131,6 @@ module.exports = (app) => {
 
 
   app.put('/posts/update', (req, res) => {
-    console.log("hello")
-    console.log(req)
     db.Post.update({
           borrowed: true
         },{
@@ -146,7 +138,5 @@ module.exports = (app) => {
             id: req.body.id
           }
     })
-
   });
-
 };
