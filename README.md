@@ -15,3 +15,6 @@ A marketplace for parents.
 
 1. Start your test watcher `$ karma start`
 2. Write some code and see if the tests pass!
+
+#Deployed on Heroku:
+https://toy-share-app.herokuapp.com/
