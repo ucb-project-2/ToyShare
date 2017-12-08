@@ -43,10 +43,13 @@ module.exports = (app) => {
   app.get('/posts/', (req, res) => {
 
     db.Post.findAll({
-    include: db.Document//,
+    include: db.Document,
     // where: {
     //   borrowed: true;
     // }
+    order: [
+      ['id', 'DESC'],
+    ],
   }).then(function(data) {
     console.log(data);
       res.render('post-listing', { post: data });
