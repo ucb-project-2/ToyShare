@@ -1,9 +1,6 @@
 html, body {
   height: !important 110%;
 }
-#land_page {
-  height: 100vh;
-}
 .jumbotron, .parallax {
   background-image: url(/img/bbb.jpg);
   min-height: 700px;
@@ -15,6 +12,9 @@ html, body {
   padding-top: 20px;
   font-family: 'Questrial', sans-serif;
   margin-bottom: 0;
+}
+#land_page {
+  height: 100vh;
 }
 .main_banner {
   text-align: center;
