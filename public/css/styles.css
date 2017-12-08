@@ -117,14 +117,21 @@ button:active {
 .hidden {
   display: none;
 }
+.home_btn,
 .success_body,
 .post_detail,
 .post_listing {
   background-image: url(/img/dust.png);
   min-height: 500px;
 }
-#fixedbutton {
+#fixed_home_button {
     top: 5px;
+    right: 5px;
+    position: fixed;
+    z-index:100
+}
+#fixedbutton {
+    top: 50px;
     right: 5px;
     position: fixed;
     z-index:100
