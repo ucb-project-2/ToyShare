@@ -30,16 +30,16 @@
   opacity: .6;
 }
 /*.welcome_header {
-  /*background-color: lightpink;*/
-  /*padding: 15px 0 15px 0;*/
-  /*opacity: .5;*/
-/*}*/
+  background-color: lightpink;
+  padding: 15px 0 15px 0;
+  opacity: .5;
+}*/
 #welcome_text {
   opacity: .8;
   margin-top: -8px;
   padding: 10px 0 15px 0;
   font-size: 38px;
-  /*color: hotpink;*/
+  /*color: lightpink;*/
 }
 .explain {
   margin-top: -50px;
@@ -105,6 +105,7 @@ button:active {
 .upload_body {
   background-image: url(/img/dust.png);
   margin-top: -30px;
+  min-height: 500px;
 }
 .upbody {
   margin-left: 20%;
