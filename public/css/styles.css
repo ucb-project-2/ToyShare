@@ -14,7 +14,7 @@ html, body {
   margin-bottom: 0;
 }
 #land_page {
-  height: 100vh;
+  height: 90vh;
 }
 .main_banner {
   text-align: center;
@@ -147,4 +147,13 @@ button:active {
 }
 .upbody {
   padding-top: 20px;
+}
+footer {
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: center;
+  background-color: lightgrey;
+}
+.footer_text {
+  color: hotpink;
 }
