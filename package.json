@@ -9,14 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ucb-project-2/mom-app.git"
+    "url": "git+ssh://git@github.com/ucb-project-2/ToyShare.git"
   },
-  "author": "Ben Lambillotte",
+  "author": "Michelle Hamdani",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ucb-project-2/mom-app/issues"
-  },
-  "homepage": "https://github.com/ucb-project-2/mom-app#readme",
+  "homepage": "http://git@github.com:ucb-project-2/ToyShare#readme",
   "dependencies": {
     "@google-cloud/storage": "^1.5.0",
     "bluebird": "^3.5.1",
@@ -47,5 +44,11 @@
     "karma-mocha-reporter": "^2.2.5",
     "mocha": "^4.0.1",
     "watchify": "^3.9.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/ucb-project-2/ToyShare/issues"
   }
 }
